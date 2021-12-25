@@ -9,13 +9,16 @@ function Header() {
 
   let headerClass;
   let linkPosition;
+  let fontSize;
 
   if (isSmallScreen) {
     headerClass = "header header_small";
     linkPosition = 'link_position_small';
+    fontSize = 'font_size_small nav_link'
   } else {
     headerClass = "header header_large";
     linkPosition = 'link_position_large'
+    fontSize = 'font_size_large nav_link'
   }
 
   return (
@@ -26,9 +29,9 @@ function Header() {
         </Link>
       </div>
       <div className={linkPosition} >
-        <NavLink to="/" className='nav_link'>About</NavLink>
-        <NavLink to="/" className='nav_link'>How it works</NavLink>
-        <NavLink to="/" className='nav_link'>Contact</NavLink>
+        <NavLink to="/" className={fontSize}>About</NavLink>
+        <NavLink to="/" className={fontSize}>How it works</NavLink>
+        <NavLink to="/" className={fontSize}>Contact</NavLink>
       </div>
     </div>
   );

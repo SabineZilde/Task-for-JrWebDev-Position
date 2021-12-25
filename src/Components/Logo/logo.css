@@ -1,21 +1,19 @@
-.logo_position {
+.logo_position_large {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .logo_small {
-    /* margin-top: 10px; */
-    margin-left: 10px;
+    margin: 10px 0 16px 20px;
 }
 
 .logo {
-    /* margin-top: 50px; */
-    margin-left: 50px;
-    
+    margin-left: 100px;
+    padding-bottom: 10px;
 }
 
 .pineapple {
-    margin-left: 10px;
-    
+    margin-left: 15px;
+    padding-bottom: 15px;
 }
 

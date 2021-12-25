@@ -4,8 +4,8 @@
 }
 
 .header_large {
-    padding-top: 50px;
-    width: 500px;
+    padding-top: 100px;
+    width: 680px;
     position: fixed;
 }
 
@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 50px;
+    margin-right: 100px;
 }
 
 .link_position_small {
@@ -30,4 +30,13 @@
 .nav_link {
     text-decoration: none;
     padding: 0 10px;
+    color: #6A707B;
+}
+
+.font_size_large {
+    font-size: 16px;
+}
+
+.font_size_small {
+    font-size: 14px;
 }

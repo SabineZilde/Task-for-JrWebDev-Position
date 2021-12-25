@@ -9,9 +9,9 @@ function Logo() {
     const isLargeScreen = useMediaQuery({ query: '(min-width: 1000px' });
 
     return (
-        <div className='logo_position'>
+        <div>
             {isLargeScreen &&
-                <div>
+                <div className='logo_position_large'>
                     <img src={logo} alt="pineapple logo" className="logo" />
                     <img src={pineapple} alt="pineapple" className="pineapple" />
                 </div>}
