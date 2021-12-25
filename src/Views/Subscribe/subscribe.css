@@ -1,6 +1,11 @@
-.subscribe {
+.subscribe_large {
     width: 500px;
     height: 100vh;
     background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+}
 
+.subscribe_small {
+    width: 400px;
+    height: 60vh;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
 }

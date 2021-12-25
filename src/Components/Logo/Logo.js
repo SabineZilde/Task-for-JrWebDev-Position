@@ -5,11 +5,11 @@ import { useMediaQuery } from 'react-responsive';
 import './logo.css';
 
 function Logo() {
-    const isSmallScreen = useMediaQuery({ query: '(max-width: 550px)' })
-    const isLargeScreen = useMediaQuery({ query: '(min-width: 550px' })
+    const isSmallScreen = useMediaQuery({ query: '(max-width: 1000px)' });
+    const isLargeScreen = useMediaQuery({ query: '(min-width: 1000px' });
 
     return (
-        <div>
+        <div className='logo_position'>
             {isLargeScreen &&
                 <div>
                     <img src={logo} alt="pineapple logo" className="logo" />

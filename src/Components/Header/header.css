@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_large {
+    padding-top: 50px;
+    width: 500px;
+    position: fixed;
+}
+
+.header_small {
+    background-color: #FFFFFF;
+}
+
+.link_position_large {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+.link_position_small {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.nav_link {
+    text-decoration: none;
+    padding: 0 10px;
+}
