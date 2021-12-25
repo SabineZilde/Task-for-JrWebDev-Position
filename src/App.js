@@ -1,10 +1,17 @@
 import "./App.css";
-import Sidebar from "./Views/Sidebar/Sidebar";
+import Header from "./Components/Header/Header";
+import Subscribe from "./Views/Subscribe/Subscribe";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="background_img">
-      <Sidebar />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Subscribe />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
