@@ -1,0 +1,14 @@
+.heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #131821;
+}
+
+.heading_large {
+    font-size: 32px;
+    padding: 374px 0 0 140px;
+}
+
+.heading_small {
+    font-size: 24px;
+    padding: 30px 0 0 20px;
+}

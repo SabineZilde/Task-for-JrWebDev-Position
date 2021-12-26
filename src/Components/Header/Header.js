@@ -7,19 +7,15 @@ import { useMediaQuery } from "react-responsive";
 function Header() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
-  let headerClass;
-  let linkPosition;
-  let fontSize;
+  let headerClass = "header header_large";
+  let linkPosition = 'link_position_large';
+  let fontSize = 'font_size_large nav_link';
 
   if (isSmallScreen) {
     headerClass = "header header_small";
     linkPosition = 'link_position_small';
     fontSize = 'font_size_small nav_link'
-  } else {
-    headerClass = "header header_large";
-    linkPosition = 'link_position_large'
-    fontSize = 'font_size_large nav_link'
-  }
+  };
 
   return (
     <div className={headerClass}>

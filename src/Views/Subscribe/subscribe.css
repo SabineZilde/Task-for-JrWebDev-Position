@@ -1,11 +1,13 @@
 .subscribe_large {
-    width: 680px;
+    max-width: 680px;
     height: 100vh;
     background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
 }
 
 .subscribe_small {
-    width: 400px;
-    height: 60vh;
+    width: 335px;
+    height: 371px;
+    margin: 188px 20px;
     background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
 }
+
