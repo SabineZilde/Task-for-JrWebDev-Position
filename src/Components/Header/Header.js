@@ -8,14 +8,14 @@ function Header() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
   let headerClass = "header header_large";
-  let linkPosition = 'link_position_large';
-  let fontSize = 'font_size_large nav_link_large';
+  let linkPosition = "link_position_large";
+  let linkStyle = "font_size_large nav_link_large link_style";
 
   if (isSmallScreen) {
     headerClass = "header header_small";
-    linkPosition = 'link_position_small';
-    fontSize = 'font_size_small nav_link_small'
-  };
+    linkPosition = "link_position_small";
+    linkStyle = "font_size_small nav_link_small link_style";
+  }
 
   return (
     <div className={headerClass}>
@@ -24,10 +24,16 @@ function Header() {
           <Logo />
         </Link>
       </div>
-      <div className={linkPosition} >
-        <NavLink to="/" className={fontSize}>About</NavLink>
-        <NavLink to="/" className={fontSize}>How it works</NavLink>
-        <NavLink to="/" className={fontSize}>Contact</NavLink>
+      <div className={linkPosition}>
+        <NavLink to="/" className={linkStyle}>
+          About
+        </NavLink>
+        <NavLink to="/" className={linkStyle}>
+          How it works
+        </NavLink>
+        <NavLink to="/" className={linkStyle}>
+          Contact
+        </NavLink>
       </div>
     </div>
   );

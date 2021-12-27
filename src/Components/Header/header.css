@@ -46,3 +46,7 @@
 .font_size_small {
     font-size: 14px;
 }
+
+.link_style:hover {
+    color: #131821;
+}
