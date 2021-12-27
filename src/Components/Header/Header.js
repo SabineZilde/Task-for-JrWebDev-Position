@@ -9,12 +9,12 @@ function Header() {
 
   let headerClass = "header header_large";
   let linkPosition = 'link_position_large';
-  let fontSize = 'font_size_large nav_link';
+  let fontSize = 'font_size_large nav_link_large';
 
   if (isSmallScreen) {
     headerClass = "header header_small";
     linkPosition = 'link_position_small';
-    fontSize = 'font_size_small nav_link'
+    fontSize = 'font_size_small nav_link_small'
   };
 
   return (

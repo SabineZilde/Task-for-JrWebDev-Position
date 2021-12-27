@@ -27,9 +27,15 @@
     margin-right: 10px;
 }
 
-.nav_link {
+.nav_link_large {
     text-decoration: none;
-    padding: 0 10px;
+    padding-left: 30px;
+    color: #6A707B;
+}
+
+.nav_link_small {
+    text-decoration: none;
+    padding-left: 15px;
     color: #6A707B;
 }
 
