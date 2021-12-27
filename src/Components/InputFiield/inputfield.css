@@ -34,10 +34,15 @@
     background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     position: fixed;
+
+}
+
+.submit_position_large {
     margin-left: -40px;
     margin-top: 55px;
 }
 
-.inline {
-    display: inline;
+.submit_position_small {
+    margin-left: -45px;
+    margin-top: 45px;
 }
