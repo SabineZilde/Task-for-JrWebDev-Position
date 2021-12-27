@@ -7,7 +7,7 @@
 .subscribe_small {
     width: 335px;
     height: 371px;
-    margin: 188px 20px;
+    margin: 188px auto;
     background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
 }
 
