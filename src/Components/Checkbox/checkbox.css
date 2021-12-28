@@ -1,0 +1,47 @@
+.checkbox_style {
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #E3E3E4;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 3px;
+}
+
+.checkbox_style:checked {
+    background-color: rgba(64, 102, 165, 1);
+    border: none;
+    padding: 6px;
+}
+
+.checkbox_style:checked:checked:after {
+    content: url(../../Assets/Images/ic_checkmark.svg);
+ }
+
+.checkbox_style_large {
+    margin: 50px 10px -7.4px 140px;
+}
+
+
+.checbox_style_small {
+    margin: 0 20px -7.2px 20px;
+}
+
+.label_style {
+    color: #6A707B;
+}
+
+.link {
+    color: rgba(19, 24, 33, 1);
+    font-size: 16px;
+    text-decoration-line: underline;
+}
+
+.link:hover {
+    color: rgba(64, 102, 165, 1);
+    text-decoration-line: underline;
+}
+
+.link:active {
+    color: rgba(35, 55, 89, 1);
+    text-decoration-line: underline;
+}
