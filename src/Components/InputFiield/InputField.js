@@ -12,9 +12,9 @@ function InputField({ inputFieldText }) {
     inputStyle = "input_style_small input_style";
     submitStyle = "submit_style submit_position_small";
   };
-  
+
   return (
-    <div className="inline">
+    <div className="wrapper">
       <input type="text" placeholder={inputFieldText} className={inputStyle} />
       <input type="submit" className={submitStyle} value="->" />
     </div>
