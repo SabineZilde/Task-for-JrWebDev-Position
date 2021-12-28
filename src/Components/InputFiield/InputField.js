@@ -1,5 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import "./inputfield.css";
 
 function InputField({ inputFieldText }) {
@@ -7,16 +9,21 @@ function InputField({ inputFieldText }) {
 
   let inputStyle = "input_style_large input_style";
   let submitStyle = "submit_style submit_position_large";
+  let wrapper = "wrapper wrapper_large";
 
   if (isSmallScreen) {
     inputStyle = "input_style_small input_style";
     submitStyle = "submit_style submit_position_small";
+    wrapper = "wrapper wrapper_small";
   };
 
+  let arrow = <FontAwesomeIcon icon={faArrowRightLong} />;
+
   return (
-    <div className="wrapper">
+    <div className={wrapper}>
       <input type="text" placeholder={inputFieldText} className={inputStyle} />
-      <input type="submit" className={submitStyle} value="->" />
+      <button className={submitStyle}>{arrow}</button>
+      {/* <input type="submit" className={submitStyle} value={arrow}/> */}
     </div>
   );
 }
