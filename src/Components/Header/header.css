@@ -6,7 +6,7 @@
 .header_large {
     padding-top: 100px;
     width: 680px;
-    position: fixed;
+    /* position: fixed; */
 }
 
 .header_small {

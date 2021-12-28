@@ -1,0 +1,60 @@
+.social_inline {
+    display: flex;
+    margin: 50px 0 0 218px;
+}
+
+.icon {
+    color: rgba(19, 24, 33, 0.3);
+}
+
+.circle {
+    border-radius: 30px;
+    border: 2px solid #E2E3E4;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.circle:hover>.icon {
+    color: #FFFFFF;
+}
+
+.circle:hover {
+    box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+    border: none;
+}
+
+.circleFB:hover {
+    background-color: #4267B2;
+}
+
+.circleFB:active {
+    background-color: #2F4A80;
+}
+
+.circleIG:hover {
+    background-color: #C13584;
+}
+
+.circleIG:active {
+    background-color: #8F2762;
+}
+
+.circleTW:hover {
+    background-color: #1DA1F2;
+}
+
+.circleTW:active {
+    background-color: #177FBF;
+}
+
+.circleYT:hover {
+    background-color: #FF0000;
+}
+
+.circleYT:active {
+    background-color: #CC0000;
+}

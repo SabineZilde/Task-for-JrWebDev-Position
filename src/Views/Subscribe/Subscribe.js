@@ -6,6 +6,7 @@ import Subheading from "../../Components/Subheading/Subheading";
 import InputField from "../../Components/InputFiield/InputField";
 import Checkbox from "../../Components/Checkbox/Checkbox";
 import Line from "../../Components/Line/Line";
+import SocialIcons from "../../Components/SocialIcons/SocialIcons";
 
 function Subscribe() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
@@ -23,6 +24,7 @@ function Subscribe() {
       <InputField inputFieldText="Type your email address here…" />
       <Checkbox description="I agree to " link="terms of service" />
       <Line />
+      <SocialIcons />
     </div>
   );
 }
