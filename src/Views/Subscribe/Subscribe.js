@@ -5,6 +5,7 @@ import Heading from "../../Components/Heading/Heading";
 import Subheading from "../../Components/Subheading/Subheading";
 import InputField from "../../Components/InputFiield/InputField";
 import Checkbox from "../../Components/Checkbox/Checkbox";
+import Line from "../../Components/Line/Line";
 
 function Subscribe() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
@@ -21,6 +22,7 @@ function Subscribe() {
       <Subheading subheading_text="Subscribe to our newsletter and get 10% discount on pineapple glasses." />
       <InputField inputFieldText="Type your email address here…" />
       <Checkbox description="I agree to " link="terms of service" />
+      <Line />
     </div>
   );
 }

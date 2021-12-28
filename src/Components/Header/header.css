@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .nav_link_large {
@@ -35,7 +35,7 @@
 
 .nav_link_small {
     text-decoration: none;
-    padding-left: 15px;
+    padding-left: 20px;
     color: #6A707B;
 }
 

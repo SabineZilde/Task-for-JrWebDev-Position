@@ -1,0 +1,18 @@
+.line {
+    height: 1px;
+    background-color: #E3E3E4;
+}
+
+.line_large {
+    height: 1px;
+    width: 400px;
+    margin: 50px 140px 50px 140px;
+    background-color: #E3E3E4;
+}
+
+.line_small {
+    height: 1px;
+    width: 295px;
+    margin: 20px 20px 0 20px;
+    background-color: #E3E3E4;
+}
