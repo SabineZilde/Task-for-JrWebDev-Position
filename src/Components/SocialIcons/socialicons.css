@@ -1,6 +1,11 @@
 .social_inline {
     display: flex;
+}
+.social_large {
     margin: 50px 0 0 218px;
+}
+.social_small {
+    margin: 20px 0 0 53px;
 }
 
 .icon {
@@ -15,10 +20,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
 }
 
-.circle:hover>.icon {
+.circle:hover > .icon {
     color: #FFFFFF;
 }
 

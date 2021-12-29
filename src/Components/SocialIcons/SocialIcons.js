@@ -7,26 +7,37 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { useMediaQuery } from "react-responsive";
 
 function SocialIcons() {
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
+
+  let socialStyle = "social_inline social_large";
+  let marginRight = {marginRight: '20px'};
+
+  if (isSmallScreen) {
+    socialStyle = "social_inline social_small";
+    marginRight = {marginRight: '10px'};
+  }
+
   return (
-    <div className="social_inline">
-      <a className="circle circleFB" href="#">
+    <div className={socialStyle}>
+      <a className="circle circleFB" style={marginRight} href="#">
         <div className="icon">
           <FontAwesomeIcon icon={faFacebookF} />
         </div>
       </a>
-      <a className="circle circleIG" href="#">
+      <a className="circle circleIG" style={marginRight} href="#">
         <div className="icon">
           <FontAwesomeIcon icon={faInstagram} />
         </div>
       </a>
-      <a className="circle circleTW" href="#">
+      <a className="circle circleTW"  style={marginRight} href="#">
         <div className="icon">
           <FontAwesomeIcon icon={faTwitter} />
         </div>
       </a>
-      <a className="circle circleYT" href="#">
+      <a className="circle circleYT"  style={marginRight} href="#">
         <div className="icon">
           <FontAwesomeIcon icon={faYoutube} />
         </div>
