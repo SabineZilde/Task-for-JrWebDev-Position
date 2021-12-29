@@ -21,6 +21,10 @@
     outline: none;
 }
 
+.submit_style:hover {
+    color: #4066A5;
+}
+
 .input_style:focus + .submit_style {
     color: #4066A5;
 }

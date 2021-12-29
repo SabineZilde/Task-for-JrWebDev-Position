@@ -15,7 +15,7 @@ function Subscribe() {
 
   if (isSmallScreen) {
     subscribeStyle = "subscribe_small";
-  }
+  };
 
   return (
     <div className={subscribeStyle}>
