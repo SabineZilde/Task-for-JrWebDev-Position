@@ -1,0 +1,13 @@
+.success_large {
+    max-width: 680px;
+    height: 135vh;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+}
+
+.success_small {
+    width: 335px;
+    height: 371px;
+    margin: 188px auto;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+}
+

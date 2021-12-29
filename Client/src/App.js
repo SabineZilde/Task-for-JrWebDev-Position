@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
 import Subscribe from "./Views/Subscribe/Subscribe";
+import Success from "./Views/Success/Success";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Subscribe />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </Router>
     </div>
