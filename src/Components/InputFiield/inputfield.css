@@ -21,6 +21,10 @@
     outline: none;
 }
 
+.input_style:focus + .submit_style {
+    color: #4066A5;
+}
+
 .wrapper:hover {
     box-shadow: 0px 30px 40px rgba(19, 24, 33, 0.06);
     border: 1px solid #4066A5;
