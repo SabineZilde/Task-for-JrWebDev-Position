@@ -34,7 +34,7 @@
 .input_style_large {
     padding-left: 40px;
     height: 68px;
-    width: 520px;
+    width: 576px;
     border: none;
     font-size: 16px;
     outline: none;
@@ -59,7 +59,7 @@
 }
 
 .submit_position_large {
-    margin-left: 75px;
+    margin-left: 25px;
 }
 
 .submit_position_small {
