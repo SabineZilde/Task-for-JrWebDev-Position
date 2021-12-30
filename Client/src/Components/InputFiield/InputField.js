@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-import Success from "../../Views/Success/Success";
 import "./inputfield.css";
 
-function InputField({ inputFieldText }) {
-  const [email, setEmail] = useState('');
+function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
+  const emailInput = useRef(null);
+
+  const [email, setEmail] = useState("");
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
@@ -23,58 +24,58 @@ function InputField({ inputFieldText }) {
   }
 
   let arrow = <FontAwesomeIcon icon={faArrowRightLong} />;
-  let error = <div className={errorMessage} hidden></div>;
+  let error;
   let isDisabled = true;
-  
+
   if (!email) {
-    error = <div className={errorMessage}>Email address is required</div>;
-  };
-  
+    error = "Email address is required";
+  }
+
   function isEmailValid(email) {
     const emailRegexp = new RegExp(
       /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{1,}$/i
     );
     return emailRegexp.test(email);
-  };
+  }
 
   if (!isEmailValid(email)) {
-    error = (
-      <div className={errorMessage}>Please provide a valid e-mail address</div>
-    );
-  };
+    error = "Please provide a valid e-mail address";
+  }
 
   function isFromColumbia(email) {
-      const columbiaRegexp = new RegExp(
-        /co$/i
-      );
-      return columbiaRegexp.test(email);
-  };
+    const columbiaRegexp = new RegExp(/co$/i);
+    return columbiaRegexp.test(email);
+  }
 
   if (isFromColumbia(email)) {
-      error = <div className={errorMessage}>We are not accepting subscriptions from Colombia emails</div>
-  };
+    error = "We are not accepting subscriptions from Colombia emails";
+  }
 
-
-  if (isEmailValid(email) && !isFromColumbia(email)) {
+  if (isEmailValid(email) && !isFromColumbia(email) && isCheckboxChecked) {
     isDisabled = false;
-  };
+  }
 
   return (
     <div className={wrapper}>
-      <form>
+      <form action="/success">
         <input
           type="email"
           placeholder={inputFieldText}
           className={inputStyle}
+          ref={emailInput}
           onChange={(event) => {
             setEmail(event.target.value);
-            console.log(email);
+            setIsInputInFocus(true);
           }}
         />
-        <button className={submitStyle} type="submit" disabled={isDisabled}>
+        <button
+          className={submitStyle}
+          type="submit"
+          disabled={isDisabled}
+        >
           {arrow}
         </button>
-        {error}
+        <div className={errorMessage}>{error}</div>
       </form>
     </div>
   );

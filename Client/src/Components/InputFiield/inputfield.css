@@ -97,3 +97,19 @@
     margin-top: 3px;
     visibility: visible;
 }
+
+.submit_style:hover ~ .error_message_large {
+    color: red;
+    font-size: 14px;
+    margin-left: 40px;
+    margin-top: 5px;
+    visibility: visible;
+}
+
+.submit_style:hover ~ .error_message_small {
+    color: red;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 3px;
+    visibility: visible;
+}

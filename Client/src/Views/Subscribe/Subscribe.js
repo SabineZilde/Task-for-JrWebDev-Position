@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./subscribe.css";
 import Heading from "../../Components/Heading/Heading";
@@ -9,24 +9,37 @@ import Line from "../../Components/Line/Line";
 import SocialIcons from "../../Components/SocialIcons/SocialIcons";
 
 function Subscribe() {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+    const [isInputInFocus, setIsInputInFocus] = useState(false);
 
-  let subscribeStyle = "subscribe_large";
+    const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
-  if (isSmallScreen) {
-    subscribeStyle = "subscribe_small";
-  };
+    let subscribeStyle = "subscribe_large";
 
-  return (
-    <div className={subscribeStyle}>
-      <Heading heading_text="Subscribe to newsletter" />
-      <Subheading subheading_text="Subscribe to our newsletter and get 10% discount on pineapple glasses." />
-      <InputField inputFieldText="Type your email address here…" />
-      <Checkbox description="I agree to " link="terms of service" />
-      <Line />
-      <SocialIcons />
-    </div>
-  );
+    if (isSmallScreen) {
+        subscribeStyle = "subscribe_small";
+    };
+
+    return (
+        <div className={subscribeStyle}>
+            <Heading heading_text="Subscribe to newsletter" />
+            <Subheading subheading_text="Subscribe to our newsletter and get 10% discount on pineapple glasses." />
+            <InputField 
+                inputFieldText="Type your email address here…" 
+                isCheckboxChecked={isCheckboxChecked}
+                setIsInputInFocus={setIsInputInFocus}
+            />
+            <Checkbox
+                description="I agree to "
+                link="terms of service"
+                setIsCheckboxChecked={setIsCheckboxChecked}
+                isCheckboxChecked={isCheckboxChecked}
+                isInputInFocus={isInputInFocus}
+            />
+            <Line />
+            <SocialIcons />
+        </div>
+    );
 }
 
 export default Subscribe;
