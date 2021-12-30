@@ -6,7 +6,7 @@ import Success from "../../Views/Success/Success";
 import "./inputfield.css";
 
 function InputField({ inputFieldText }) {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
@@ -24,23 +24,40 @@ function InputField({ inputFieldText }) {
 
   let arrow = <FontAwesomeIcon icon={faArrowRightLong} />;
   let error = <div className={errorMessage} hidden></div>;
-
+  let isDisabled = true;
+  
+  if (!email) {
+    error = <div className={errorMessage}>Email address is required</div>;
+  };
+  
   function isEmailValid(email) {
     const emailRegexp = new RegExp(
-      /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+      /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{1,}$/i
     );
     return emailRegexp.test(email);
-  }
+  };
 
   if (!isEmailValid(email)) {
     error = (
       <div className={errorMessage}>Please provide a valid e-mail address</div>
     );
-  }
+  };
 
-  if (!email) {
-    error = <div className={errorMessage}>Email address is required</div>;
-  }
+  function isFromColumbia(email) {
+      const columbiaRegexp = new RegExp(
+        /co$/i
+      );
+      return columbiaRegexp.test(email);
+  };
+
+  if (isFromColumbia(email)) {
+      error = <div className={errorMessage}>We are not accepting subscriptions from Colombia emails</div>
+  };
+
+
+  if (isEmailValid(email) && !isFromColumbia(email)) {
+    isDisabled = false;
+  };
 
   return (
     <div className={wrapper}>
@@ -54,7 +71,7 @@ function InputField({ inputFieldText }) {
             console.log(email);
           }}
         />
-        <button className={submitStyle} type="submit">
+        <button className={submitStyle} type="submit" disabled={isDisabled}>
           {arrow}
         </button>
         {error}
