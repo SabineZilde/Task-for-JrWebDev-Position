@@ -1,56 +1,63 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-import { emailSchema } from "../../Validations/emailValidation";
-import img from '../../Assets/Images/ic_checkmark.svg';
+import Success from "../../Views/Success/Success";
 import "./inputfield.css";
 
 function InputField({ inputFieldText }) {
   const [email, setEmail] = useState("");
-
-  const submitEmail = async (event) => {
-      event.preventDefault();
-      let formData = {
-          email: event.target[0].value,
-      };
-      const isValid = await emailSchema.isValid(formData);
-      console.log(isValid);
-      console.log(formData);
-  };
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
   let inputStyle = "input_style_large input_style";
   let submitStyle = "submit_style submit_position_large";
   let wrapper = "wrapper wrapper_large";
+  let errorMessage = "error_message_large";
 
   if (isSmallScreen) {
     inputStyle = "input_style_small input_style";
     submitStyle = "submit_style submit_position_small";
     wrapper = "wrapper wrapper_small";
+    errorMessage = "error_message_small";
   }
 
   let arrow = <FontAwesomeIcon icon={faArrowRightLong} />;
+  let error = <div className={errorMessage} hidden></div>;
+
+  function isEmailValid(email) {
+    const emailRegexp = new RegExp(
+      /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+    );
+    return emailRegexp.test(email);
+  }
+
+  if (!isEmailValid(email)) {
+    error = (
+      <div className={errorMessage}>Please provide a valid e-mail address</div>
+    );
+  }
+
+  if (!email) {
+    error = <div className={errorMessage}>Email address is required</div>;
+  }
 
   return (
     <div className={wrapper}>
-      <form onSubmit={submitEmail}>
+      <form>
         <input
           type="email"
           placeholder={inputFieldText}
           className={inputStyle}
           onChange={(event) => {
             setEmail(event.target.value);
+            console.log(email);
           }}
         />
-        <button type="submit">
-          <Link className={submitStyle} to="/success">
-            {arrow}
-          </Link>
+        <button className={submitStyle} type="submit">
+          {arrow}
         </button>
-        <input type="submit" value='->' style={{background: `url(${img})`}}/>
+        {error}
       </form>
     </div>
   );

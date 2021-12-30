@@ -73,3 +73,26 @@
 .submit_position_small {
     margin-left: -25px;
 }
+
+.error_message_large {
+    visibility: hidden;
+}
+
+.error_message_small {
+    visibility: hidden;
+}
+
+.input_style:focus ~ .error_message_large {
+    color: red;
+    font-size: 14px;
+    margin-left: 40px;
+    margin-top: 5px;
+    visibility: visible;
+}
+
+.input_style:focus ~ .error_message_small {
+    color: red;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 3px;
+}
