@@ -1,12 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import Axios from 'axios';
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import "./inputfield.css";
 
 function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
-  const emailInput = useRef(null);
-
   const [email, setEmail] = useState("");
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
@@ -55,6 +54,12 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
     isDisabled = false;
   }
 
+  const addEmail = () => {
+    Axios.post('http://localhost:3002/emails', {
+        email: email
+    }).then(() => console.log('success'));
+  };
+
   return (
     <div className={wrapper}>
       <form action="/success">
@@ -62,7 +67,6 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
           type="email"
           placeholder={inputFieldText}
           className={inputStyle}
-          ref={emailInput}
           onChange={(event) => {
             setEmail(event.target.value);
             setIsInputInFocus(true);
@@ -72,6 +76,7 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
           className={submitStyle}
           type="submit"
           disabled={isDisabled}
+          onClick={addEmail}
         >
           {arrow}
         </button>

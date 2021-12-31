@@ -1,24 +1,35 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const cors = require('cors');
+
+// app.use(cors());
+app.use(function (request, response, next) {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.use(express.json());
 
 const db = mysql.createConnection({
     user: 'root',
-    host: 'sabine-zilde.magebithr.com',
-    password: 'BdCYihKIojDHwvd',
-    database: 'databaseName',
+    host: 'localhost',
+    password: '',
+    database: 'emailSystem',
 });
 
-app.post('/create', (req, res) => {
+app.post('/emails', (req, res) => {
+    console.log(req.body)
     const email = req.body.email;
 
-    db.query('INSERT INTO tablename (email) VALUES (?)',
+    db.query('INSERT INTO emailstable (email) VALUES (?)',
         [email],
         (err, result) => {
             if (err) {
                 console.log(err)
             } else {
-                res.send('Values inserted')
+                res.send('Values inserted');
             }
         }
     );
