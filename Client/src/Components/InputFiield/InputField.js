@@ -8,6 +8,19 @@ import "./inputfield.css";
 function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
   const [email, setEmail] = useState("");
 
+  const addEmail = async () => {
+      const url = 'http://localhost:3002/emails';
+      const data = {
+        email: email,
+    }
+    try {
+        await Axios.post(url, data);
+        console.log('success');
+    } catch (e) {
+        alert('Somethig went wrong when talikng to the server');
+    }
+  };
+
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
 
   let inputStyle = "input_style_large input_style";
@@ -54,12 +67,6 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
     isDisabled = false;
   }
 
-  const addEmail = () => {
-    Axios.post('http://localhost:3002/emails', {
-        email: email
-    }).then(() => console.log('success'));
-  };
-
   return (
     <div className={wrapper}>
       <form action="/success">
@@ -68,14 +75,15 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
           placeholder={inputFieldText}
           className={inputStyle}
           onChange={(event) => {
+            event.preventDefault();
             setEmail(event.target.value);
             setIsInputInFocus(true);
           }}
         />
         <button
           className={submitStyle}
-          type="submit"
-          disabled={isDisabled}
+        //   type="submit"
+        //   disabled={isDisabled}
           onClick={addEmail}
         >
           {arrow}
