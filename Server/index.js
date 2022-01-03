@@ -41,8 +41,20 @@ app.post('/emails', (req, res) => {
     );
 });
 
-app.get('/getEmails', (req, res) => {
+app.get('/emails', (req, res) => {
     db.query('SELECT * FROM emailstable ORDER BY created', (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    db.query('DELETE FROM emailstable WHERE ID = ?', id, (err, result) => {
         if (err) {
             console.log(err);
         } else {

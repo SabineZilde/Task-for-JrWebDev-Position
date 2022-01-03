@@ -8,7 +8,7 @@ function Emails() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const url = "http://localhost:3002/getEmails";
+    const url = "http://localhost:3002/emails";
     Axios.get(url).then((response) => {
       setEmailList(response.data);
     });
@@ -29,6 +29,16 @@ function Emails() {
       setEmailList(sorted);
       setOrder("ASC");
     }
+  };
+
+  const emailDelete = (id) => {
+    Axios.delete(`http://localhost:3002/delete/${id}`).then((response) => {
+      setEmailList(
+        emailList.filter((val) => {
+          return val.id != id;
+        })
+      );
+    });
   };
 
   return (
@@ -54,7 +64,7 @@ function Emails() {
               if (searchTerm === "") {
                 return val;
               } else if (
-                val.email.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                val.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 val.created.toLowerCase().includes(searchTerm.toLowerCase())
               ) {
                 return val;
@@ -65,6 +75,9 @@ function Emails() {
                 <tr key={id} style={{ textAlign: "center" }}>
                   <td>{val.created.slice(0, 10)}</td>
                   <td>{val.email}</td>
+                  <td>
+                    <button onClick={() => emailDelete(val.id)}>X</button>
+                  </td>
                 </tr>
               );
             })}
