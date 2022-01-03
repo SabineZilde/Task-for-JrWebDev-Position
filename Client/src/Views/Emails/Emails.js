@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import './email.css';
+import "./email.css";
 
 function Emails() {
   const [emailList, setEmailList] = useState([]);
   const [order, setOrder] = useState("ASC");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const url = "http://localhost:3002/getEmails";
@@ -32,6 +33,14 @@ function Emails() {
 
   return (
     <div style={{ backgroundColor: "white", padding: "50px" }}>
+      <input
+        type="text"
+        placeholder="Search..."
+        style={{ marginBottom: 20 }}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+      />
       <table>
         <thead>
           <tr className="pointer">
@@ -40,14 +49,25 @@ function Emails() {
           </tr>
         </thead>
         <tbody>
-          {emailList.map((val, id) => {
-            return (
-              <tr key={id} style={{textAlign: 'center'}}>
-                <td>{val.created.slice(0, 10)}</td>
-                <td>{val.email}</td>
-              </tr>
-            );
-          })}
+          {emailList
+            .filter((val) => {
+              if (searchTerm === "") {
+                return val;
+              } else if (
+                val.email.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                val.created.toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return val;
+              }
+            })
+            .map((val, id) => {
+              return (
+                <tr key={id} style={{ textAlign: "center" }}>
+                  <td>{val.created.slice(0, 10)}</td>
+                  <td>{val.email}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>

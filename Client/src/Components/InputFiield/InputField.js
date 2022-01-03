@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import "./inputfield.css";
 
-function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
+function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus, setIsFormSubmited }) {
   const [email, setEmail] = useState('');
 
   const addEmail = async (e) => {
@@ -17,6 +17,7 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
     try {
       await Axios.post(url, data);
       console.log("success");
+      setIsFormSubmited(true);
     } catch (e) {
       alert("Somethig went wrong when talikng to the server");
     }
