@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import Axios from 'axios';
+import Axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import "./inputfield.css";
 
 function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
 
-  const addEmail = async () => {
-      const url = 'http://localhost:3002/emails';
-      const data = {
-        email: email,
-    }
+  const addEmail = async (e) => {
+    e.preventDefault();
+    const url = "http://localhost:3002/emails";
+    const data = {
+      email: email,
+    };
     try {
-        await Axios.post(url, data);
-        console.log('success');
+      await Axios.post(url, data);
+      console.log("success");
     } catch (e) {
-        alert('Somethig went wrong when talikng to the server');
+      alert("Somethig went wrong when talikng to the server");
     }
   };
 
@@ -69,22 +70,21 @@ function InputField({ inputFieldText, isCheckboxChecked, setIsInputInFocus }) {
 
   return (
     <div className={wrapper}>
-      <form action="/success">
+      <form>
         <input
           type="email"
           placeholder={inputFieldText}
           className={inputStyle}
           onChange={(event) => {
-            event.preventDefault();
             setEmail(event.target.value);
             setIsInputInFocus(true);
           }}
         />
         <button
           className={submitStyle}
-        //   type="submit"
-        //   disabled={isDisabled}
+          disabled={isDisabled}
           onClick={addEmail}
+          type="submit"
         >
           {arrow}
         </button>

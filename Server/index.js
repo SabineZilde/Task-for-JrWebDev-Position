@@ -35,11 +35,21 @@ app.post('/emails', (req, res) => {
             if (err) {
                 console.log(err)
             } else {
-                res.send('Values inserted');
+                res.send(result);
             }
         }
     );
 });
+
+app.get('/getEmails', (req, res) => {
+    db.query('SELECT * FROM emailstable ORDER BY created', (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+})
 
 app.listen(3002, () => {
     console.log('Server is up and running on port 3002');

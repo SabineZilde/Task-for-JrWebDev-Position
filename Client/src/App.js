@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 import Subscribe from "./Views/Subscribe/Subscribe";
 import Success from "./Views/Success/Success";
+import Emails from "./Views/Emails/Emails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 
@@ -31,6 +32,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Subscribe />} />
                     <Route path="/success" element={<Success />} />
+                    <Route path="/emails" element={<Emails />} />
                 </Routes>
             </Router>
         </div>
