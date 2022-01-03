@@ -48,8 +48,8 @@ app.get('/getEmails', (req, res) => {
         } else {
             res.send(result);
         }
-    })
-})
+    });
+});
 
 app.listen(3002, () => {
     console.log('Server is up and running on port 3002');
