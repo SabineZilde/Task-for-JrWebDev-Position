@@ -34,6 +34,9 @@ function Header() {
         <NavLink to="/" className={linkStyle}>
           Contact
         </NavLink>
+        <NavLink to="/emails" className={linkStyle}>
+          Emails
+        </NavLink>
       </div>
     </div>
   );
