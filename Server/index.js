@@ -10,10 +10,11 @@ app.use(
     })
 );
 
+const PORT = 3001;
+
 app.use(express.json());
 
-app.post('/emails', (req, res) => {
-    console.log(req.body)
+app.post('/api/emails', (req, res) => {
     const email = req.body.email;
 
     db.query('INSERT INTO emailstable (email) VALUES (?)',
@@ -28,7 +29,7 @@ app.post('/emails', (req, res) => {
     );
 });
 
-app.get('/emails', (req, res) => {
+app.get('/api/emails', (req, res) => {
     db.query('SELECT * FROM emailstable ORDER BY created', (err, result) => {
         if (err) {
             console.log(err);
@@ -38,7 +39,7 @@ app.get('/emails', (req, res) => {
     });
 });
 
-app.delete('/delete/:id', (req, res) => {
+app.delete('/api/delete/:id', (req, res) => {
     const id = req.params.id;
     console.log(id)
     db.query('DELETE FROM emailstable WHERE ID = ?', id, (err, result) => {
@@ -50,6 +51,6 @@ app.delete('/delete/:id', (req, res) => {
     });
 });
 
-app.listen(3002, () => {
-    console.log('Server is up and running on port 3002');
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server is up and running on port ${PORT}`);
 });
