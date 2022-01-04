@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import Axios from "axios";
 import "./email.css";
 
@@ -7,6 +8,14 @@ function Emails() {
   const [order, setOrder] = useState("ASC");
   const [searchTerm, setSearchTerm] = useState("");
   const [providers, setProviders] = useState([]);
+
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 1000px)" });
+
+  let tableStyle = "table_large";
+
+  if (isSmallScreen) {
+      tableStyle = "table_small";
+  };
 
   useEffect(() => {
     const url = "http://localhost:3002/emails";
@@ -66,7 +75,7 @@ function Emails() {
   };
 
   return (
-    <div style={{ backgroundColor: "white", padding: 50 }}>
+    <div className={tableStyle}>
       <input
         type="text"
         placeholder="Search..."
@@ -79,13 +88,27 @@ function Emails() {
         className="pointer"
         onClick={addProviders}
         style={{
-            backgroundColor: "#E2E3E4",
-            margin: 5,
-            borderRadius: 3,
-            padding: 5,
-          }}
+          backgroundColor: "#E2E3E4",
+          margin: 5,
+          borderRadius: 3,
+          padding: 5,
+        }}
       >
         Filter by email providers
+      </button>
+      <button
+        className="pointer"
+        onClick={() => {
+          setSearchTerm("");
+        }}
+        style={{
+          backgroundColor: "#E2E3E4",
+          margin: 5,
+          borderRadius: 3,
+          padding: 5,
+        }}
+      >
+        Remove filters
       </button>
       <div>
         {providers.map((provider, id) => (
@@ -99,7 +122,6 @@ function Emails() {
             key={id}
             onClick={() => {
               emailList.filter((val) => {
-                console.log(provider.toString());
                 setSearchTerm(provider.toString());
               });
             }}

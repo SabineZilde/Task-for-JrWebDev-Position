@@ -1,3 +1,13 @@
+.table_large {
+    margin: 100px
+}
+
+.table_small {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
 .pointer:hover {
     cursor: pointer;
 }
