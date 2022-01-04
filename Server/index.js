@@ -18,6 +18,7 @@ app.use(express.json());
 //     password: 'test12345',
 //     database: 'emaildb',
 // });
+
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',

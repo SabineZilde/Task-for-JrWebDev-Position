@@ -6,6 +6,7 @@ function Emails() {
   const [emailList, setEmailList] = useState([]);
   const [order, setOrder] = useState("ASC");
   const [searchTerm, setSearchTerm] = useState("");
+  const [providers, setProviders] = useState([]);
 
   useEffect(() => {
     const url = "http://localhost:3002/emails";
@@ -41,8 +42,31 @@ function Emails() {
     });
   };
 
+  let extractedProviders = [];
+  let oneArray = [];
+  let uniqueProviders = [];
+
+  emailList.filter((val) => {
+    const match = val.email.match(/(?=@).*(?=\.)/);
+    extractedProviders.push(match);
+  });
+
+  for (let [array] of extractedProviders) {
+    oneArray.push(array);
+  }
+
+  oneArray.forEach((c) => {
+    if (!uniqueProviders.includes(c)) {
+      uniqueProviders.push(c);
+    }
+  });
+
+  const addProviders = () => {
+    setProviders(uniqueProviders);
+  };
+
   return (
-    <div style={{ backgroundColor: "white", padding: "50px" }}>
+    <div style={{ backgroundColor: "white", padding: 50 }}>
       <input
         type="text"
         placeholder="Search..."
@@ -51,9 +75,42 @@ function Emails() {
           setSearchTerm(e.target.value);
         }}
       />
+      <button
+        className="pointer"
+        onClick={addProviders}
+        style={{
+            backgroundColor: "#E2E3E4",
+            margin: 5,
+            borderRadius: 3,
+            padding: 5,
+          }}
+      >
+        Filter by email providers
+      </button>
+      <div>
+        {providers.map((provider, id) => (
+          <button
+            style={{
+              backgroundColor: "#E2E3E4",
+              margin: 5,
+              borderRadius: 3,
+              padding: 5,
+            }}
+            key={id}
+            onClick={() => {
+              emailList.filter((val) => {
+                console.log(provider.toString());
+                setSearchTerm(provider.toString());
+              });
+            }}
+          >
+            {provider}
+          </button>
+        ))}
+      </div>
       <table>
         <thead>
-          <tr className="pointer">
+          <tr className="pointer" style={{ paddingBottom: 20 }}>
             <th onClick={() => sorting("created")}>Date</th>
             <th onClick={() => sorting("email")}>Email</th>
           </tr>
@@ -74,9 +131,14 @@ function Emails() {
               return (
                 <tr key={id} style={{ textAlign: "center" }}>
                   <td>{val.created.slice(0, 10)}</td>
-                  <td>{val.email}</td>
-                  <td>
-                    <button onClick={() => emailDelete(val.id)}>X</button>
+                  <td style={{ paddingLeft: 20 }}>{val.email}</td>
+                  <td style={{ paddingLeft: 20 }}>
+                    <button
+                      style={{ color: "red" }}
+                      onClick={() => emailDelete(val.id)}
+                    >
+                      X
+                    </button>
                   </td>
                 </tr>
               );
