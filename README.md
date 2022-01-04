@@ -4,15 +4,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to run this project on your local machine
 
+## Client side
+
 cd into Client drirectory and install the dependencies:
 
 ### `npm install`
 
-Runs the app in the development mode.\
+Run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+### `npm start`
 
-cd into Server drirectory and install the dependencies:
+## Server side
+
+cd into Server directory and install the dependencies:
 
 ### `npm install`
 
