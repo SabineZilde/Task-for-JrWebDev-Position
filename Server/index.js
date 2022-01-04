@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql');
 const cors = require('cors');
+const db = require("./config/db.js");
 
 app.use(
     cors({
@@ -11,20 +11,6 @@ app.use(
 );
 
 app.use(express.json());
-
-// const db = mysql.createConnection({
-//     user: 'root',
-//     host: 'http://sabine-zilde.magebithr.com',
-//     password: 'test12345',
-//     database: 'emaildb',
-// });
-
-const db = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    password: 'MyNewPass',
-    database: 'emailSystem',
-});
 
 app.post('/emails', (req, res) => {
     console.log(req.body)
