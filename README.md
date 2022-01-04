@@ -27,5 +27,5 @@ Run the server side:
 
 ## mySQL database
 
-Import the database from file
+Import the database from file pineappledb_dump.sql
 
